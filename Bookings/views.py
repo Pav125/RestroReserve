@@ -9,6 +9,10 @@ def status_table(request):
         {'name': 'Table4', 'available': False},
         {'name': 'Table5', 'available': False},
         {'name': 'Table6', 'available': True},
+        {'name': 'Table4', 'available': True},
+        {'name': 'Table5', 'available': False},
+        {'name': 'Table6', 'available': True},
+        {'name': 'Table6', 'available': True},
     ]
     context = {
         'tables' : tables,
