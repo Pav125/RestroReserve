@@ -3,10 +3,9 @@
 
 {% block status_table %}
 <div class="container">
-    <h1>Table Reservation Status</h1>
     <div>
         {% for table in tables %}
-            <div class="table-status {% if table.available %}available{% else %}not-available{% endif %}">
+            <div class="{% if table.available %}table-status-available{% else %}table-status-not-available{% endif %}">
                 {{ table.name }}
             </div>
         {% endfor %}
