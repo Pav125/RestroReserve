@@ -2,4 +2,4 @@ from django.shortcuts import render
 
 # Create your views here.
 def home(request):
-    return render(request, "Bookings/base.html")
+    return render(request, "Bookings/home.html")
