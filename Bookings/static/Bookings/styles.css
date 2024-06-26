@@ -35,7 +35,7 @@ nav .brand {
 }
 
 .nav-comp div:hover {
-    background-color: #034078;
+    background-color: #455f03;
 }
 
 .brand a, .nav-comp a {
@@ -79,6 +79,7 @@ nav .brand {
 }
 
 .nav-footer {
+    margin-bottom: 50px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -121,7 +122,7 @@ nav .brand {
     padding: 50px;
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+    border-radius: 20px;
 }
 
 .table-container {
@@ -144,7 +145,8 @@ nav .brand {
     color: #fff;
     font-weight: bold;
     text-transform: uppercase;
-    border: none;
+    border: dotted;
+    border-color: #45a049;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
