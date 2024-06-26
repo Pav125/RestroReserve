@@ -7,3 +7,4 @@ git remote -v       #to get repo name or link.
 git push origin <name-features>     #For pushing the changes
 
 
+.
