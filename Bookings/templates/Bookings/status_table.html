@@ -36,7 +36,8 @@
 <div class="container">
     <div class="table-container">
         {% for table in tables %}
-            <button class="{% if table.available %}table-status-available{% else %}table-status-not-available{% endif %}">
+            <button class="{% if not table.reserved %}table-status-available{% else %}table-status-not-available{% endif %}">
+                {{ table.table_number }}
                 {{ table.name }}
             </button>
         {% endfor %}
