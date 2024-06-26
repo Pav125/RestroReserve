@@ -1,0 +1,9 @@
+git remote -v       #to get repo name or link.
+
+
+# pip freeze > requirements.txt
+
+
+git push origin <name-features>     #For pushing the changes
+
+
