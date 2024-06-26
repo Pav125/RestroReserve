@@ -5,8 +5,8 @@ def status_table(request):
     tables = [
         {'name': 'Table1', 'available': False},
         {'name': 'Table2', 'available': True},
-        {'name': 'Table3', 'available': False},
-        {'name': 'Table4', 'available': True},
+        {'name': 'Table3', 'available': True},
+        {'name': 'Table4', 'available': False},
         {'name': 'Table5', 'available': False},
         {'name': 'Table6', 'available': True},
     ]

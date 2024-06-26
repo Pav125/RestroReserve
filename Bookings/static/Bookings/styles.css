@@ -35,7 +35,7 @@ nav .brand {
 }
 
 .nav-comp div:hover {
-    background-color: #03375f;
+    background-color: #455f03;
 }
 
 .brand a, .nav-comp a{
@@ -119,8 +119,8 @@ nav .brand {
     max-width: 100%;
     margin: 0 auto;
     padding: 100px;
-    /* background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    /* background-color: #95f7f2; */
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */ 
     border-radius: 10px;
 }
 .table-container {
@@ -141,7 +141,8 @@ nav .brand {
     color: #0a0909;
     font-weight: bold;
     text-transform: uppercase;
-    border: none;
+    border: dotted;
+    border-color: #45a049;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
