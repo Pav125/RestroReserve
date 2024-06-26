@@ -79,6 +79,7 @@ nav .brand {
 }
 
 .nav-footer {
+    margin-bottom: 50px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -118,10 +119,10 @@ nav .brand {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 500px;
+    padding: 50px;
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+    border-radius: 20px;
 }
 
 .table-container {
