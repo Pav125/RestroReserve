@@ -1,7 +1,6 @@
 from django.shortcuts import render
 
 # Create your views here.
-
 def status_table(request):
     tables = [
         {'name': 'Table1', 'available': False},
@@ -12,8 +11,10 @@ def status_table(request):
         {'name': 'Table6', 'available': True},
     ]
     context = {
-        'tables' : tables
+        'tables' : tables,
+        'notshow_booknow' : True
     }
     return render(request, 'Bookings/status_table.html', context)
+
 def home(request):
     return render(request, "Bookings/home.html")
