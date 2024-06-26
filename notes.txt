@@ -4,7 +4,12 @@ git remote -v       #to get repo name or link.
 # pip freeze > requirements.txt
 
 
-git push origin <name-features>     #For pushing the changes
+#for pushing changes
+git add .
+git commit -m "messages"
+git push origin <name-features>
 
+#for pulling the changes
+git pull  origin master
 
 .
