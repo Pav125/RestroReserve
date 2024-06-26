@@ -1,0 +1,14 @@
+{% extends "Bookings/base.html" %}
+{% load static %}
+
+{% block status_table %}
+<div class="container">
+    <div>
+        {% for table in tables %}
+            <div class="{% if table.available %}table-status-available{% else %}table-status-not-available{% endif %}">
+                {{ table.name }}
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock status_table %}
