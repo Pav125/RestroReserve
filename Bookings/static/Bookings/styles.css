@@ -173,6 +173,7 @@ nav .brand {
     background-color: #f44336; /* Red */
     opacity: 0.6;
 }
+
 .table-status-not-available:hover {
     box-shadow: none;
     transform: none;
@@ -303,4 +304,13 @@ nav .brand {
 
 footer p {
     margin: 0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
