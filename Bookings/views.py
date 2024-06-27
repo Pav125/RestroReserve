@@ -1,24 +1,16 @@
 from django.shortcuts import render
+from .models import Reservations
 
 # Create your views here.
 def status_table(request):
-    tables = [
-        {'name': 'Table1', 'available': False},
-        {'name': 'Table2', 'available': True},
-        {'name': 'Table3', 'available': False},
-        {'name': 'Table4', 'available': True},
-        {'name': 'Table5', 'available': False},
-        {'name': 'Table6', 'available': True},
-        {'name': 'Table4', 'available': True},
-        {'name': 'Table5', 'available': False},
-        {'name': 'Table6', 'available': True},
-        {'name': 'Table6', 'available': True},
-    ]
+
+    reservations = Reservations.objects.all()
     context = {
-        'tables' : tables,
+        'tables' : reservations,
+
         'notshow_booknow' : True
     }
     return render(request, 'Bookings/status_table.html', context)
 
 def home(request):
-    return render(request, "Bookings/home.html")
+    return render(request, "Bookings/base1.html")
