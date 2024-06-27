@@ -10,10 +10,17 @@
     <link rel="stylesheet" type="text/css" href="{% static 'Bookings/styles.css' %}">
 </head>
 <body>
-    
+    <nav>
+        <div class="brand"><a href='/'>Restro</a></div>
+        <div class="nav-comp">
+            {% if not notshow_booknow %}
+                <div><a href="{% url "status" %}">Book now</a></div>
+            {% endif %}
+            <div>some</div>
+        </div>
+    </nav>
     <div>
          {% block home %}{% endblock home %}
-
     </div>
     <div>
         {% block status_table %}{% endblock status_table %}

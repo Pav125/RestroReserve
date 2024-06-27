@@ -2,12 +2,43 @@
 {% load static %}
 
 {% block status_table %}
+<nav class="navbar">
+    <div class="nav-date">
+        <div class="date-box">
+            <span class="day">WED</span>
+            <span class="date">26</span>
+            <span class="month">JUN</span>
+        </div>
+        <div class="date-box">
+            <span class="day">THU</span>
+            <span class="date">27</span>
+            <span class="month">JUN</span>
+        </div>
+    </div>
+    <div class="nav-controls">
+        <div class="nav-control">
+            <select>
+                <option>Select Timings</option>
+                <option>Lunch</option>
+                <option>Dinner</option>
+            </select>
+        </div>
+        <div class="nav-control">
+            <input type="text" placeholder="Search">
+        </div>
+    </div>
+</nav>
+<div class="nav-footer">
+    <span class="indicator cancellation">Cancellation Available</span>
+    <span class="indicator available">Available</span>
+    <span class="indicator fast-filling">Not Available</span>
+</div>
 <div class="container">
-    <div>
+    <div class="table-container">
         {% for table in tables %}
-            <div class="{% if table.available %}table-status-available{% else %}table-status-not-available{% endif %}">
+            <button class="{% if table.available %}table-status-available{% else %}table-status-not-available{% endif %}">
                 {{ table.name }}
-            </div>
+            </button>
         {% endfor %}
     </div>
 </div>
