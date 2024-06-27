@@ -11,4 +11,4 @@ def status_table(request):
     return render(request, 'Bookings/status_table.html', context)
 
 def home(request):
-    return render(request, "Bookings/home.html")
+    return render(request, "Bookings/base1.html")
