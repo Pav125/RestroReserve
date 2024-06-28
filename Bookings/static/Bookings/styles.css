@@ -35,7 +35,9 @@ nav .brand {
 }
 
 .nav-comp div:hover {
+
     background-color: #455f03;
+
 }
 
 .brand a, .nav-comp a {
@@ -79,7 +81,9 @@ nav .brand {
 }
 
 .nav-footer {
+
     margin-bottom: 50px;
+
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -123,6 +127,7 @@ nav .brand {
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 20px;
+
 }
 
 .table-container {
@@ -145,8 +150,10 @@ nav .brand {
     color: #fff;
     font-weight: bold;
     text-transform: uppercase;
+
     border: dotted;
     border-color: #45a049;
+
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -227,6 +234,7 @@ nav .brand {
 .section-gray {
     background-color: gray;
     color: white;
+
 }
 
 .container-home {
@@ -242,7 +250,9 @@ nav .brand {
 }
 
 .header .highlight {
-    color: red;
+
+    color: rgb(213, 60, 0);
+
 }
 
 .three-columns {
@@ -277,6 +287,7 @@ nav .brand {
     margin-right: 20px;
 }
 
+
 .news-events {
     background-color: #f7f7f7;
 }
@@ -307,6 +318,7 @@ nav .brand {
 footer p {
     margin: 0;
 }
+
 
 .navbar {
     display: flex;
