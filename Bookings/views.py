@@ -8,9 +8,12 @@ def status_table(request):
     context = {
         'tables' : reservations,
 
-        'notshow_booknow' : True
+        'show_booknow' : True
     }
     return render(request, 'Bookings/status_table.html', context)
 
 def home(request):
-    return render(request, "Bookings/base1.html")
+    return render(request, "Bookings/home1.html")
+
+def about(request):
+    return render(request, 'Bookings/About.html')
