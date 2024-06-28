@@ -1,2 +1,14 @@
-venv
+# Django specific files
+*.log
+*.pot
+*.pyc
+__pycache__/
+
+# Environment variables
+.env
+
+# Database
 db.sqlite3
+
+# Virtual environment
+venv/
