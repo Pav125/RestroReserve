@@ -3,9 +3,11 @@ from .models import Reservations
 
 # Create your views here.
 def status_table(request):
+
     reservations = Reservations.objects.all()
     context = {
         'tables' : reservations,
+
         'notshow_booknow' : True
     }
     return render(request, 'Bookings/status_table.html', context)
