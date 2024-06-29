@@ -36,22 +36,14 @@
     <div class="table-container">
       {% for table in tables %}
         {% if not table.reserved %}
-          <button class="table-status-available" onclick="location.href='{% url 'register' %}?table_number={{ table.table_number }}'">Table {{ table.table_number }}</button>
+          <a href="{% url 'register' table.id %}">
+            <button class="table-status-available">Table {{ table.table_number }}</button>
+          </a>
         {% else %}
           <button class="table-status-not-available" disabled>Table {{ table.table_number }}</button>
         {% endif %}
       {% endfor %}
     </div>
   </div>
-  <script>
-    document.addEventListener('DOMContentLoaded', (event) => {
-      const buttons = document.querySelectorAll('button[data-url]')
-      buttons.forEach((button) => {
-        button.addEventListener('click', () => {
-          const url = button.getAttribute('data-url')
-          window.location.href = url
-        })
-      })
-    })
-  </script>
+  
 {% endblock %}
