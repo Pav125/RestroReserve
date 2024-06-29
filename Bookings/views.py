@@ -1,11 +1,11 @@
 from django.shortcuts import render,redirect
-from .models import Reservations
+from .models import Reservations, Images
 from .forms import ReservationForm
 
 # Create your views here.
 
 def home(request):
-    return render(request, "Bookings/home1.html")
+    return render(request, "Bookings/home1.html", )
 
 def about(request):
     return render(request, 'Bookings/About.html')
@@ -18,16 +18,26 @@ def status_table(request):
     }
     return render(request, 'Bookings/status_table.html', context)
 
-def register(request):
-    table_number = request.GET.get('table_number', None)
-    initial_data = {'table_number': table_number} if table_number else {}
+def register(request, id):
+    image = Images.objects.latest('id')
 
-    if request.method == 'POST':
-        form = ReservationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('success')
-    else:
-        form = ReservationForm(initial=initial_data)
+    details = Reservations.objects.get(id=id)
 
-    return render(request, 'Bookings/register.html', {'form': form})
+    if details:
+        if request.method == 'POST':
+            form = ReservationForm(request.POST)
+            if form.is_valid():
+                form.save()
+                return redirect('success')
+        else:
+            form = ReservationForm()
+    
+    context = {
+        'form': form,
+        'image': image.image.url,
+        'table_number': details.table_number,
+        'date': details.date,
+        'show_booknow': True,
+        }
+
+    return render(request, 'Bookings/register.html', context )

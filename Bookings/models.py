@@ -12,3 +12,6 @@ class Reservations(models.Model):
 
     def __str__(self):
         return f'Reservation for {self.name} on {self.date} at table {self.table_number}'
+    
+class Images(models.Model):
+    image = models.ImageField(upload_to='images/')
