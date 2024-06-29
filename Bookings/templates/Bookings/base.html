@@ -7,17 +7,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'Bookings/styles.css' %}">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'Bookings/styles1.css' %}">
 </head>
-<body>
-    <nav>
-        <div class="brand"><a href='/'>Restro</a></div>
-        <div class="nav-comp">
-            {% if not notshow_booknow %}
-                <div><a href="{% url "status" %}">Book now</a></div>
-            {% endif %}
-            <div>some</div>
+    <nav class="navbar">
+        <div class="brand"><a href="/">HappyTummy</a></div>
+        <div class="nav-links" id="nav-links">
+            <a href="/">Home</a>        
+            <a href='{% url "about" %}'>About</a>
+            <a href="/menu/">Menu</a>
+            {% comment %} <a href="/pages/">Pages</a> {% endcomment %}
+            <a href="/contact/">Contact</a>
         </div>
+        {% if not show_booknow %}
+        <div class="nav-order">
+            <a href='{% url "status" %}' class="order-btn">Book Now</a>
+        </div>
+        {% endif %}
     </nav>
     <div>
          {% block home %}{% endblock home %}
@@ -25,5 +32,13 @@
     <div>
         {% block status_table %}{% endblock status_table %}
     </div>
+    {% block About %}{% endblock About %}
+    {% block register %}{% endblock register %}
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    {% comment %} <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> {% endcomment %}
+    {% comment %} <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script> {% endcomment %}
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
-</html>
+</html> 

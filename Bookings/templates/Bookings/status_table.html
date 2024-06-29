@@ -1,46 +1,57 @@
-{% extends "Bookings/base.html" %}
+{% extends 'Bookings/base.html' %}
 {% load static %}
 
 {% block status_table %}
-<nav class="navbar">
+  <nav class="navb">
     <div class="nav-date">
-        <div class="date-box">
-            <span class="day">WED</span>
-            <span class="date">26</span>
-            <span class="month">JUN</span>
-        </div>
-        <div class="date-box">
-            <span class="day">THU</span>
-            <span class="date">27</span>
-            <span class="month">JUN</span>
-        </div>
+      <div class="date-box">
+        <span class="day">WED</span>
+        <span class="date">26</span>
+        <span class="month">JUN</span>
+      </div>
+      <div class="date-box">
+        <span class="day">THU</span>
+        <span class="date">27</span>
+        <span class="month">JUN</span>
+      </div>
     </div>
     <div class="nav-controls">
-        <div class="nav-control">
-            <select>
-                <option>Select Timings</option>
-                <option>Lunch</option>
-                <option>Dinner</option>
-            </select>
-        </div>
-        <div class="nav-control">
-            <input type="text" placeholder="Search">
-        </div>
+      <div class="nav-control">
+        <select>
+          <option>Select Timings</option>
+          <option>Lunch</option>
+          <option>Dinner</option>
+        </select>
+      </div>
+      <div class="nav-control">
+        <input type="text" placeholder="Search" />
+      </div>
     </div>
-</nav>
-<div class="nav-footer">
-    <span class="indicator cancellation">Cancellation Available</span>
+  </nav>
+  <div class="nav-footer">
     <span class="indicator available">Available</span>
     <span class="indicator fast-filling">Not Available</span>
-</div>
-<div class="container">
+  </div>
+  <div class="container">
     <div class="table-container">
-        {% for table in tables %}
-            <button class="{% if not table.reserved %}table-status-available{% else %}table-status-not-available{% endif %}">
-                {{ table.table_number }}
-                {{ table.name }}
-            </button>
-        {% endfor %}
+      {% for table in tables %}
+        {% if not table.reserved %}
+          <button class="table-status-available" onclick="location.href='{% url 'register' %}?table_number={{ table.table_number }}'">Table {{ table.table_number }}</button>
+        {% else %}
+          <button class="table-status-not-available" disabled>Table {{ table.table_number }}</button>
+        {% endif %}
+      {% endfor %}
     </div>
-</div>
-{% endblock status_table %}
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+      const buttons = document.querySelectorAll('button[data-url]')
+      buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+          const url = button.getAttribute('data-url')
+          window.location.href = url
+        })
+      })
+    })
+  </script>
+{% endblock %}

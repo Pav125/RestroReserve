@@ -8,7 +8,7 @@ body {
 
 /* Navigation Bar */
 .navbar {
-    background-color: #fff;
+    background-color: #fff8f8;
     padding: 20px 50px;
     display: flex;
     justify-content: space-between;
@@ -31,7 +31,8 @@ body {
 .navbar .nav-links a {
     margin: 0 15px;
     color: #333;
-    text-decoration: none;
+    text-decoration:none;
+    font-weight: 550;
 }
 
 .navbar .nav-order .order-btn {
@@ -46,27 +47,16 @@ body {
     background-color: #e5533d;
 }
 
-.hamburger {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-}
-
-.hamburger span {
-    height: 3px;
-    width: 25px;
-    background: #333;
-    margin: 4px 0;
-    transition: 0.4s;
-}
 
 /* Hero Section */
 .hero-section {
-    background-image: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-image: url(
+        'https://img.freepik.com/free-photo/pasta-with-vegetables-cheese-black-background_23-2147926114.jpg?w=2000&t=st=1719554871~exp=1719555471~hmac=55caa202f49b38248c4645da8227375cd29affe36d583daad7cfff6c6068c2c8'
+    );
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
-    height: 60vh;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -83,12 +73,17 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0);
 }
 
 .hero-section .hero-content {
     position: relative;
     z-index: 1;
+}
+
+.hero-title{
+    color: #e5533d;
+    font-weight: bold;
 }
 
 .hero-section h1 {
@@ -107,6 +102,7 @@ body {
     text-decoration: none;
     color: #fff;
     margin: 0 10px;
+    border: none;
 }
 
 .hero-buttons .btn-primary {
@@ -117,54 +113,6 @@ body {
     background-color: rgba(255, 255, 255, 0.5);
 }
 
-/* Reservation Section */
-.reservation-section {
-    background: #fff;
-    padding: 50px 20px;
-    text-align: center;
-}
-
-.reservation-section h2 {
-    font-size: 2em;
-    margin-bottom: 20px;
-}
-
-.reservation-section form {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.reservation-section .form-group {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.reservation-section .form-group label {
-    margin-bottom: 5px;
-}
-
-.reservation-section .form-group input {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    width: 200px;
-}
-
-.reservation-section .btn-primary {
-    background-color: #ff6347;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.reservation-section .btn-primary:hover {
-    background-color: #e5533d;
-}
 
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
@@ -186,10 +134,6 @@ body {
         text-align: center;
     }
 
-    .hamburger {
-        display: flex;
-    }
-
     .hero-section h1 {
         font-size: 2em;
     }
@@ -198,14 +142,6 @@ body {
         font-size: 1em;
     }
 
-    .reservation-section form {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .reservation-section .form-group input {
-        width: 100%;
-    }
 }
 
 @media (max-width: 480px) {
@@ -228,4 +164,156 @@ body {
     .hero-buttons .btn {
         margin: 5px 0;
     }
+}
+/* navigation for status */
+
+.navb {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nav-date {
+    display: flex;
+}
+
+.date-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ff5252;
+    color: #fff;
+    padding: 5px 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+.day, .date, .month {
+    display: block;
+}
+
+.nav-controls {
+    display: flex;
+    align-items: center;
+}
+
+.nav-control {
+    margin-left: 20px;
+}
+
+.nav-control select, .nav-control input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    width: 250px;
+}
+
+.nav-footer {
+
+    margin-bottom: 50px;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.indicator {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    font-size: 14px;
+}
+
+.indicator.available::before {
+    content: '•';
+    color: #4caf50;
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+.indicator.fast-filling::before {
+    content: '•';
+    color: #f44336;
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+
+}
+
+.table-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 120px;
+    justify-items: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Available table styling */
+.table-status-available {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    font-size: 18px;
+    line-height: 120px;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: dotted;
+    border-color: #45a049;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #4caf50; /* Green */
+}
+
+.table-status-available:hover {
+    background-color: #388e3c; /* Darker green */
+    transform: scale(1.1);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Not available table styling */
+.table-status-not-available {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    font-size: 18px;
+    line-height: 120px;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    cursor: not-allowed;
+    background-color: #f7342d; /* Red */
+    opacity: 0.6;
+}
+
+.table-status-not-available:hover {
+    box-shadow: none;
+    transform: none;
+}
+
+/* styles.css */
+.reservation-image {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    border-radius: 8px;
 }
