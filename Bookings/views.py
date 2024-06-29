@@ -1,19 +1,33 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import Reservations
+from .forms import ReservationForm
 
 # Create your views here.
-def status_table(request):
-
-    reservations = Reservations.objects.all()
-    context = {
-        'tables' : reservations,
-
-        'show_booknow' : True
-    }
-    return render(request, 'Bookings/status_table.html', context)
 
 def home(request):
     return render(request, "Bookings/home1.html")
 
 def about(request):
     return render(request, 'Bookings/About.html')
+
+def status_table(request):
+    tables = Reservations.objects.all()
+    context = {
+        'show_booknow': True,
+        'tables': tables,
+    }
+    return render(request, 'Bookings/status_table.html', context)
+
+def register(request):
+    table_number = request.GET.get('table_number', None)
+    initial_data = {'table_number': table_number} if table_number else {}
+
+    if request.method == 'POST':
+        form = ReservationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('success')
+    else:
+        form = ReservationForm(initial=initial_data)
+
+    return render(request, 'Bookings/register.html', {'form': form})
