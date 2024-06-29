@@ -20,3 +20,6 @@ python manage.py migrate
 
 #to open shell
 python manage.py shell
+
+#Django ORM and queries
+https://chatgpt.com/share/7c402635-50bf-4dd8-b916-1f14914b3054
