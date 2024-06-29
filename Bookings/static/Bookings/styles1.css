@@ -230,13 +230,6 @@ body {
     font-size: 14px;
 }
 
-.indicator.cancellation::before {
-    content: '•';
-    color: #ffeb3b;
-    font-size: 20px;
-    margin-right: 5px;
-}
-
 .indicator.available::before {
     content: '•';
     color: #4caf50;
@@ -281,10 +274,8 @@ body {
     color: #fff;
     font-weight: bold;
     text-transform: uppercase;
-
     border: dotted;
     border-color: #45a049;
-
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -310,7 +301,7 @@ body {
     text-transform: uppercase;
     border: none;
     cursor: not-allowed;
-    background-color: #f44336; /* Red */
+    background-color: #f7342d; /* Red */
     opacity: 0.6;
 }
 
@@ -319,3 +310,10 @@ body {
     transform: none;
 }
 
+/* styles.css */
+.reservation-image {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    border-radius: 8px;
+}
