@@ -2,37 +2,32 @@
 {% load static %}
 
 {% block status_table %}
-  <nav class="navb">
-    <div class="nav-date">
-      <div class="date-box">
-        <span class="day">WED</span>
-        <span class="date">26</span>
-        <span class="month">JUN</span>
-      </div>
-      <div class="date-box">
-        <span class="day">THU</span>
-        <span class="date">27</span>
-        <span class="month">JUN</span>
-      </div>
+  <nav class="navb d-flex justify-content-center">
+    <div class="nav-date" >
+      <form method="get" action="{% url 'status' %}" class="form-inline ">
+        <div class="form-group mb-2">
+            <label for="date" class="sr-only">Select Date:</label>
+            <input type="date" id="date" name="date" value="{{ selected_date|date:'Y-m-d' }}" class="form-control" min="{{ today|date:'Y-m-d' }}" max="{{ max_date|date:'Y-m-d' }}" required >
+        </div>
+        <div class="form-group mx-sm-3 mb-2">
+            <label for="meal_type" class="sr-only">Select Meal Type:</label>
+            <select id="meal_type" name="meal_type" class="form-control" required>
+              <option value="Lunch" {% if meal_type == 'Lunch' %}selected{% endif %}>Lunch</option>
+              <option value="Dinner" {% if meal_type == 'Dinner' %}selected{% endif %}>Dinner</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary mb-2">Check Availability</button>
+    </form>    
     </div>
-    <div class="nav-controls">
-      <div class="nav-control">
-        <select>
-          <option>Select Timings</option>
-          <option>Lunch</option>
-          <option>Dinner</option>
-        </select>
-      </div>
-      <div class="nav-control">
-        <input type="text" placeholder="Search" />
-      </div>
-    </div>
+    
   </nav>
   <div class="nav-footer">
     <span class="indicator available">Available</span>
     <span class="indicator fast-filling">Not Available</span>
   </div>
+  
   <div class="container">
+    <h3> Showing for {{ selected_date }} </h3>
     <div class="table-container">
       {% for table in tables %}
         {% if not table.reserved %}
