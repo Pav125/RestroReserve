@@ -23,3 +23,6 @@ python manage.py shell
 
 #Django ORM and queries
 https://chatgpt.com/share/7c402635-50bf-4dd8-b916-1f14914b3054
+
+#Home bg
+https://www.freepik.com/free-photo/pasta-with-vegetables-cheese-black-background_3346725.htm#fromView=search&page=5&position=6&uuid=94c9418d-2b55-45f5-89e7-f98374138378
