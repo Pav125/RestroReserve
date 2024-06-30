@@ -41,8 +41,8 @@
         {% else %}
           <button class="table-status-not-available" disabled>Table {{ table.table_number }}</button>
         {% endif %}
-      {% empty %}
-        <h3>No tables</h3>
+      {% comment %} {% empty %}
+        <h3>No tables</h3> {% endcomment %}
       {% endfor %}
     </div>
   </div>

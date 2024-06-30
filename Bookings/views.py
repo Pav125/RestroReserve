@@ -15,9 +15,10 @@ def status_table(request):
     today = date.today()
     tomorrow = today + timedelta(days=1)
     max_date = today + timedelta(days=2)
-    selected_date = request.GET.get('date', today)
+    selected_date = request.GET.get('date') or today
     meal_type = request.GET.get('meal_type')
-
+    if not meal_type:
+        meal_type = 'Lunch'
     tables = Reservations.objects.filter(date = selected_date, lunch_or_dinner = meal_type)
     
     context = {
