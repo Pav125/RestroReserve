@@ -7,7 +7,9 @@ urlpatterns = [
     path("", views.home, name="home"),
     path('status/', views.status_table, name = 'status'),
     path('about/', views.about, name = 'about'),
-    path('register/<int:id>/', views.register, name = 'register')
+    path('register/<int:id>/', views.register, name = 'register'),
+    path('menu/', views.menu, name = 'menu'),
+    path('contact/', views.contact, name = 'contact'),
 ]
 
 if settings.DEBUG:
