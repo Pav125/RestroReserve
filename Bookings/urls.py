@@ -8,6 +8,5 @@ urlpatterns = [
     path('about/', views.about, name = 'about'),
     path('register/<int:id>/', views.register, name = 'register')
 ]
-
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
