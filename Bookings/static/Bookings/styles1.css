@@ -8,43 +8,50 @@ body {
 
 /* Navigation Bar */
 .navbar {
-    background-color: #fff8f8;
-    padding: 12px 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #ddd;
+    padding: 10px 20px;
+    background-color: #f1fff1;
 }
 
-.navbar .brand a {
+.navbar-brand {
     font-size: 1.5em;
     font-weight: bold;
-    color: #ff6347;
-    text-decoration: none;
+    color: #ff6347 !important;
 }
 
-.navbar .nav-links {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.navbar .nav-links a {
-    margin: 0 15px;
-    color: #333;
-    text-decoration:none;
+.nav-link {
+    align-items: center;
+    color: #333 !important;
     font-weight: 550;
 }
 
-.navbar .nav-order .order-btn {
-    background-color: #ff6347;
-    color: #fff;
+.order-btn {
+    text-align: center;
+    background-color: #4CAF50;
+    color: #fff !important;
     padding: 10px 20px;
     border-radius: 5px;
     text-decoration: none;
 }
 
-.navbar .nav-order .order-btn:hover {
-    background-color: #e5533d;
+.order-btn:hover {
+    background-color: #e5533d !important;
+    text-decoration: none;
+}
+
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        justify-content: center;
+    }
+
+    .navbar-nav {
+        margin: 10px 0;
+    }
+}
+
+@media (min-width: 992px) {
+    .navbar-nav {
+        margin-left: auto;
+    }
 }
 
 
@@ -106,7 +113,7 @@ body {
 }
 
 .hero-buttons .btn-primary {
-    background-color: #ff6347;
+    background-color: #4CAF50;
 }
 
 .hero-buttons .btn-secondary {
@@ -118,6 +125,14 @@ body {
 @media (max-width: 768px) {
     .navbar {
         padding: 10px 20px;
+    }
+
+    /* .navbar .nav-toggle {
+        display: block;
+        font-size: 1.5em;
+        background: none;
+        border: none;
+        cursor: pointer;
     }
 
     .navbar .nav-links {
@@ -132,7 +147,7 @@ body {
         padding: 10px;
         width: 100%;
         text-align: center;
-    }
+    } */
 
     .hero-section h1 {
         font-size: 2em;
@@ -141,6 +156,8 @@ body {
     .hero-section p {
         font-size: 1em;
     }
+
+    
 
 }
 
@@ -164,6 +181,7 @@ body {
     .hero-buttons .btn {
         margin: 5px 0;
     }
+
 }
 /* navigation for status */
 
@@ -315,4 +333,79 @@ body {
     height: 100vh;
     object-fit: cover;
     border-radius: 8px;
+}
+
+.custom-img {
+    width: 100%;
+    height: 200px; /* Adjust this value as needed */
+    object-fit: cover;
+}
+
+.reg-login-container {
+    display: flex;
+    height: 100vh;
+}
+
+.reg-left-panel, .reg-right-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.reg-left-panel {
+    background-color: #4CAF50; /* Match the green background color */
+    color: white;
+    text-align: center;
+}
+
+.reg-left-panel img {
+    max-width: 80%;
+    margin-bottom: 20px;
+}
+
+.reg-left-panel h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.reg-left-panel p {
+    font-size: 16px;
+}
+
+.reg-right-panel {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.regform-container {
+    width: 100%;
+    max-width: 400px;
+}
+
+.btn-prime {
+    background-color: #000000;
+    border-color: #000000;
+    color: #ddd;
+}
+
+.btn-prime:hover{
+    background-color: #4CAF50;
+    border-color: #4CAF50;
+    color: #ffffff;
+}
+
+
+.text-warm{
+    color: #ff6347;
+}
+
+.no-border {
+    border: none;
+    outline: none;
+    margin: 56px;
 }

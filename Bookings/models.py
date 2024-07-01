@@ -14,14 +14,25 @@ class Reservations(models.Model):
 
     def __str__(self):
         return f'Reservation for {self.name} on {self.date} at table {self.table_number}'
+    
+    
 class Media(models.Model):
     about_header1 = models.ImageField(upload_to='about_header1/', null= True, blank= True)
     about_header2 = models.ImageField(upload_to='about_header2/', null= True, blank= True)
     about_header3 = models.ImageField(upload_to='about_header3/', null= True, blank= True)
     about_body1 = models.ImageField(upload_to='about_body1/', null= True, blank= True)
     register_image = models.ImageField(upload_to='register_image/', null= True, blank= True)
+    feedback_image = models.ImageField(upload_to='feedback_image/', null= True, blank= True)
 
-
+        
+class Feedbacks(models.Model):
+    name = models.CharField(max_length=30)
+    email = models.EmailField()
+    rate_us = models.IntegerField(choices=[(1, '1'), (2, '2'), (3, '3'), (4, '4'), (5, '5')])
+    feedback = models.CharField(max_length=500, blank=True , null= True)
+    def __str__(self):
+        return f'feedback from {self.name}'
+    
 # Signal receiver function to create default entries
 @receiver(post_migrate)
 def create_default_reservations(sender, **kwargs):

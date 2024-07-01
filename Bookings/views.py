@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
-from .models import Reservations, Media
-from .forms import ReservationForm
+from .models import Reservations, Media,Feedbacks
+from .forms import ReservationForm,FeedbackForm
 from datetime import date, timedelta
 from django.contrib import messages
 # Create your views here.
@@ -73,3 +73,20 @@ def contact(request):
 
 def menu(request):
     return render(request, 'Bookings/menu.html')
+
+def feedback_view(request):
+    image = Media.objects.latest('id')
+    if request.method == 'POST':
+        form = FeedbackForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            form.save()
+            messages.success(request, f'{name}! Thankyou for your feedback')
+            return redirect('home')
+    else:
+        form = FeedbackForm()
+    context={
+        'form': form,
+        'image': image.feedback_image.url,
+        }
+    return render(request, 'Bookings/contact.html', context)
