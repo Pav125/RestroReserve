@@ -3,23 +3,27 @@
 
 {% block status_table %}
   <nav class="navb d-flex justify-content-center">
-    <div class="nav-date" >
-      <form method="get" action="{% url 'status' %}" class="form-inline ">
-        <div class="form-group mb-2">
-            <label for="date" class="sr-only">Select Date:</label>
-            <input type="date" id="date" name="date" value="{{ selected_date|date:'Y-m-d' }}" class="form-control" min="{{ today|date:'Y-m-d' }}" max="{{ max_date|date:'Y-m-d' }}" required >
-        </div>
+    <div class="nav-date">
+      <form method="get" action="{% url 'status' %}" class="form-inline">
+        {% comment %} <div class="form-group mx-sm-3 mb-2">
+          <label for="date">Pick :</label>
+        </div> {% endcomment %}
         <div class="form-group mx-sm-3 mb-2">
-            <label for="meal_type" class="sr-only">Select Meal Type:</label>
-            <select id="meal_type" name="meal_type" class="form-control" required>
-              <option value="Lunch" {% if meal_type == 'Lunch' %}selected{% endif %}>Lunch</option>
-              <option value="Dinner" {% if meal_type == 'Dinner' %}selected{% endif %}>Dinner</option>
-            </select>
+          <label for="meal_type" class="sr-only">Select Meal Type:</label>
+          <select id="meal_type" name="meal_type" class="form-control" required>
+            <option value="Lunch" {% if meal_type == 'Lunch' %}selected{% endif %}>Lunch</option>
+            <option value="Dinner" {% if meal_type == 'Dinner' %}selected{% endif %}>Dinner</option>
+          </select>
         </div>
-        <button type="submit" class="btn btn-primary mb-2">Check Availability</button>
-    </form>    
+        <div class="form-group mb-2">
+          <label class="sr-only">Select Date:</label>
+          <input type="hidden" id="date" name="date" value="{{ selected_date|date:'Y-m-d' }}">
+          <button type="submit" class="btn btn-outline-dark mr-2" name="date" value="{{ today|date:'Y-m-d' }}">{{ today|date:'Y-m-d' }}</button>
+          <button type="submit" class="btn btn-outline-dark mr-2" name="date" value="{{ tomorrow|date:'Y-m-d' }}">{{ tomorrow|date:'Y-m-d' }}</button>
+          <button type="submit" class="btn btn-outline-dark mr-2" name="date" value="{{ max_date|date:'Y-m-d' }}">{{ max_date|date:'Y-m-d' }}</button>
+        </div>
+      </form>
     </div>
-    
   </nav>
   <div class="nav-footer">
     <span class="indicator available">Available</span>
@@ -31,12 +35,14 @@
     <div class="table-container">
       {% for table in tables %}
         {% if not table.reserved %}
-          <a href="{% url 'register' table.id %}">
-            <button class="table-status-available">Table {{ table.table_number }}</button>
-          </a>
+        <a href="{% url 'register' table.id %}">
+          <button class="table-status-available">Table {{ table.table_number }}</button>
+       </a>
         {% else %}
           <button class="table-status-not-available" disabled>Table {{ table.table_number }}</button>
         {% endif %}
+      {% comment %} {% empty %}
+        <h3>No tables</h3> {% endcomment %}
       {% endfor %}
     </div>
   </div>
