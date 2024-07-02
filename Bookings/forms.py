@@ -1,5 +1,5 @@
 from django import forms
-from .models import Reservations
+from .models import Reservations,Feedbacks
 
 class ReservationForm(forms.ModelForm):
     class Meta:
@@ -11,3 +11,8 @@ class ReservationForm(forms.ModelForm):
             # 'lunch_dinner': forms.Select(choices=Reservations.lunch_or_dinner),
             # 'reserved': forms.CheckboxInput(),
         }
+        
+class FeedbackForm(forms.ModelForm):
+    class Meta:
+        model = Feedbacks
+        fields = ['name', 'email', 'rate_us', 'feedback']

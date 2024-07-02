@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
-from .models import Reservations, Images
-from .forms import ReservationForm
+from .models import Reservations, Media,Feedbacks
+from .forms import ReservationForm,FeedbackForm
 from datetime import date, timedelta
 from django.contrib import messages
 # Create your views here.
@@ -9,7 +9,14 @@ def home(request):
     return render(request, "Bookings/home1.html", )
 
 def about(request):
-    return render(request, 'Bookings/About.html')
+    latest_image = Media.objects.latest('id')
+    context={
+        'image1' : latest_image.about_header1.url,
+        'image2' : latest_image.about_header2.url, 
+        'image3' : latest_image.about_header3.url,   
+        'image4' : latest_image.about_body1.url,   
+        }
+    return render(request, 'Bookings/About.html', context)
 
 def status_table(request):
     today = date.today()
@@ -33,8 +40,7 @@ def status_table(request):
     return render(request, 'Bookings/status_table.html', context)
 
 def register(request, id):
-    image = Images.objects.latest('id')
-
+    latest_image = Media.objects.latest('id')
     details = Reservations.objects.get(id=id)
     if details:
         if request.method == 'POST':
@@ -53,8 +59,8 @@ def register(request, id):
             form = ReservationForm()
     
     context = {
+        'image' :  latest_image.register_image.url,
         'form': form,
-        'image': image.image.url,
         'table_number': details.table_number,
         'date': details.date,
         'show_booknow': True,
@@ -67,3 +73,20 @@ def contact(request):
 
 def menu(request):
     return render(request, 'Bookings/menu.html')
+
+def feedback_view(request):
+    image = Media.objects.latest('id')
+    if request.method == 'POST':
+        form = FeedbackForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            form.save()
+            messages.success(request, f'{name}! Thankyou for your feedback')
+            return redirect('home')
+    else:
+        form = FeedbackForm()
+    context={
+        'form': form,
+        'image': image.feedback_image.url,
+        }
+    return render(request, 'Bookings/contact.html', context)

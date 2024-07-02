@@ -4,20 +4,27 @@
 {% load crispy_forms_tags %}
 
 {% block register %}
-<div class="container mt-5">
-    <div class="row align-items-center justify-content-center">
-        <div class="col-md-6">
-            <h1 class="text-center mb-4">Reservation</h1>
-            <h3 class="text-center mb-4"> For Table {{ table_number }} on {{ date }}</h3>
-            <form method="post" class="needs-validation w-70" novalidate>
-                {% csrf_token %}
-                {{ form|crispy }}
-                <button type="submit" class="btn btn-primary w-100 mt-3">Submit</button>
-            </form>
-        </div>
-        <div class="col-md-6 d-flex justify-content-center">
-            <img src="{{ image }}" class="img-fluid reservation-image" alt="Reservation Image" />
+<div class="reg-login-container">
+    <div class="reg-right-panel col-12 col-md-6">
+        <div class="regform-container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-12">
+                    <h1 class="text-center mb-4">Reservation</h1>
+                    <h3 class="text-center mb-4">For Table {{ table_number }} on {{ date }}</h3>
+                    <form method="post" class="needs-validation w-70" novalidate>
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <button type="submit" class="btn btn-prime rounded-5 w-100 mt-3">Submit</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
+    <div class="reg-left-panel d-none d-md-flex col-md-6">
+        <img src="{{ image }}" width="80%" alt="Fun & Interesting Learning">
+        <h2>Fun & Interesting Learning</h2>
+        <p>Master your entire curriculum at your pace and enjoy it while doing so!</p>
+    </div>
 </div>
+
 {% endblock register %}
