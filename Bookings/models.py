@@ -33,6 +33,22 @@ class Feedbacks(models.Model):
     def __str__(self):
         return f'feedback from {self.name}'
     
+class Category(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+
+    def __str__(self):
+        return self.name
+
+class MenuItem(models.Model):
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='items')
+    name = models.CharField(max_length=100)
+    description = models.TextField(default=True,null=True)
+    price = models.DecimalField(max_digits=5, decimal_places=2)
+    image = models.ImageField(upload_to='Menu_image/', null= True, blank= True)
+
+    def __str__(self):
+        return self.name
+    
 # Signal receiver function to create default entries
 @receiver(post_migrate)
 def create_default_reservations(sender, **kwargs):
