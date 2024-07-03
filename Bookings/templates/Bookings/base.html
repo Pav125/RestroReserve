@@ -15,6 +15,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
 </head>
+
 <nav class="navbar navbar-expand-lg navbar-light">
   <a class="navbar-brand" href="/">RoyalFeast</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,17 +54,17 @@
 
 
     {% if messages %}
-  <div class="messages">
-    {% for message in messages %}
-      <div class="alert alert-{{ message.tags }} text-center ">
-        {{ message }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-      </div>
-    {% endfor %}
-  </div>
-{% endif %}
+    <div class="messages">
+        {% for message in messages %}
+          <div class="alert alert-{{ message.tags }} text-center ">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+        {% endfor %}
+    </div>
+    {% endif %}
 
     {% block home %}{% endblock home %}
     
@@ -88,6 +89,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</div>
+
+    
 </body>
 </html> 

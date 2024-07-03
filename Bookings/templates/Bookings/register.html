@@ -11,10 +11,10 @@
                 <div class="col-12">
                     <h1 class="text-center mb-4">Reservation</h1>
                     <h3 class="text-center mb-4">For Table {{ table_number }} on {{ date }}</h3>
-                    <form method="post" class="needs-validation w-70" novalidate>
+                    <form id="reservation-form" method="post" class="needs-validation w-70">
                         {% csrf_token %}
                         {{ form|crispy }}
-                        <button type="submit" class="btn btn-prime rounded-5 w-100 mt-3">Submit</button>
+                        <button id="submit-btn" type="submit" class="btn btn-prime rounded-5 w-100 mt-3">Submit</button>
                     </form>
                 </div>
             </div>
@@ -26,4 +26,17 @@
         <p>Reserve your table easily and enjoy a delightful dining experience with us. We look forward to serving you!</p>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('reservation-form');
+    const submitBtn = document.getElementById('submit-btn');
+
+    form.addEventListener('submit', function() {
+        submitBtn.disabled = true;
+        submitBtn.innerText = 'Submitting...';
+    });
+});
+</script>
+
 {% endblock register %}
