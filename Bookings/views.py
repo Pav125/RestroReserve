@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import Reservations, Media,Feedbacks
+from .models import Reservations, Media, Feedbacks,Category
 from .forms import ReservationForm,FeedbackForm
 from datetime import date, timedelta
 from django.contrib import messages
@@ -68,12 +68,6 @@ def register(request, id):
 
     return render(request, 'Bookings/register.html', context )
 
-def contact(request):
-    return render(request, 'Bookings/contact.html')
-
-def menu(request):
-    return render(request, 'Bookings/menu.html')
-
 def feedback_view(request):
     image = Media.objects.latest('id')
     if request.method == 'POST':
@@ -90,3 +84,11 @@ def feedback_view(request):
         'image': image.feedback_image.url,
         }
     return render(request, 'Bookings/contact.html', context)
+
+def menu_view(request):
+    categories = Category.objects.all().prefetch_related('items')
+    context = {
+        'categories': categories,
+    }
+    return render(request, 'Bookings/menu.html', context)
+

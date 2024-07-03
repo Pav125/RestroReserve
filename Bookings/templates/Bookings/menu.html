@@ -1,5 +1,21 @@
 {% extends "Bookings/base.html" %}
-
+{% load static %}
+{% block title %}Menu{% endblock title %}
 {% block menu %}
-<h1>Menu</h1>
+<div class="menu-body">
+    <div class="container menu-container">
+        <div class="menu-header">menu</div>
+        {% for category in categories %}
+        <div class="category">
+            <div class="category-header">{{ category.name }}</div>
+            {% for item in category.items.all %}
+            <div class="row item">
+                <div class="col item-name">{{ item.name }}</div>
+                <div class="col item-price">{{ item.price }}</div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock menu %}
