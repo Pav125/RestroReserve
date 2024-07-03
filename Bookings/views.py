@@ -3,6 +3,7 @@ from .models import Reservations, Media, Feedbacks,Category
 from .forms import ReservationForm,FeedbackForm
 from datetime import date, timedelta
 from django.contrib import messages
+from django.core.mail import send_mail,BadHeaderError
 # Create your views here.
 
 def home(request):
@@ -53,8 +54,19 @@ def register(request, id):
                 details.email = email
                 details.reserved = True
                 details.save()
-                messages.success(request, f'Your reservation for {details.name} has been made successfully')
-                return redirect('status')
+                message = 'Thank you for booking a table with us'
+                try:
+                    send_mail(
+                        subject=f"Succesfully reserved your table at RoyalFeast",
+                        message=f"Hi {name}.\n\nThe table {details.table_number} at {details.date} is successfully booked.\n\nMessage: {message}",
+                        from_email='devipavan824@gmail.com',  # sender
+                        recipient_list=[email],  # receivers
+                        fail_silently=False,
+                    )
+                    messages.success(request, f'Your reservation for {details.name} has been made successfully')
+                    return redirect('status')
+                except BadHeaderError:
+                    messages.error(request, 'Invalid header found in email. Please try again.')
         else:
             form = ReservationForm()
     
