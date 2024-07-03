@@ -3,6 +3,7 @@ from .models import Reservations, Media, Feedbacks,Category
 from .forms import ReservationForm,FeedbackForm
 from datetime import date, timedelta
 from django.contrib import messages
+from django.core.mail import send_mail,BadHeaderError
 # Create your views here.
 
 def home(request):
@@ -42,31 +43,44 @@ def status_table(request):
 def register(request, id):
     latest_image = Media.objects.latest('id')
     details = Reservations.objects.get(id=id)
-    if details:
-        if request.method == 'POST':
-            form = ReservationForm(request.POST)
-            if form.is_valid():
-                name = form.cleaned_data['name']
-                email = form.cleaned_data['email']
-                
+    form = ReservationForm(request.POST or None)
+    
+    if request.method == 'POST' and details:
+        if form.is_valid():
+            name = form.cleaned_data.get('name', '')
+            email = form.cleaned_data.get('email', '')
+            if not name or not email:
+                messages.error(request, 'Please enter your name and email')
+            else:
                 details.name = name
                 details.email = email
                 details.reserved = True
                 details.save()
-                messages.success(request, f'Your reservation for {details.name} has been made successfully')
-                return redirect('status')
-        else:
-            form = ReservationForm()
-    
+                message = 'Thank you for booking a table with us'
+                try:
+                    send_mail(
+                        subject=f"Succesfully reserved your table at RoyalFeast",
+                        message=f"Hi {name}.\n\nThe table {details.table_number} at {details.date} is successfully booked.\n\nMessage: {message}",
+                        from_email='devipavan824@gmail.com',  # sender
+                        recipient_list=[email],  # receivers
+                        fail_silently=False,
+                    )
+                    messages.success(request, f'Your reservation for {details.name} has been made successfully')
+                    return redirect('status')
+                except BadHeaderError:
+                    messages.error(request, 'Invalid header found in email. Please try again.')
+    else:
+        form = ReservationForm()
+
     context = {
-        'image' :  latest_image.register_image.url,
+        'image': latest_image.register_image.url,
         'form': form,
         'table_number': details.table_number,
         'date': details.date,
         'show_booknow': True,
-        }
+    }
 
-    return render(request, 'Bookings/register.html', context )
+    return render(request, 'Bookings/register.html', context)
 
 def feedback_view(request):
     image = Media.objects.latest('id')

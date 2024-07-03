@@ -1,17 +1,16 @@
 {% extends "Bookings/base.html" %}
 {% load static %}
-
+{% block title %}RoyalFeast{% endblock title %}
 {% block home %}
-
 
 <header class="hero-section">
     <div class="hero-content">
-        <h1 class="hero-title">HappyTummy</h1>
-        <h1>Best food for your taste</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.</p>
+        <h1 class="hero-title">RoyalFeast</h1>
+        <h2>The Best Culinary Experience</h2>
+        <p>Join us for a culinary journey that promises delight in every bite.</p>
         <div class="hero-buttons">
-            <a href="{% url "about" %}" class="btn btn-primary">Explore Now</a>
-            <a href="{% url "menu" %}" class="btn btn-secondary">See Menu</a>
+            <a href="{% url 'about' %}" class="btn btn-primary">Discover More</a>
+            <a href="{% url 'menu' %}" class="btn btn-secondary">View Menu</a>
         </div>
     </div>
 </header>

@@ -2,7 +2,7 @@
 {% load widget_tweaks %}
 {% load static %}
 {% load crispy_forms_tags %}
-
+{% block title %}Table Registration{% endblock title %}
 {% block register %}
 <div class="reg-login-container">
     <div class="reg-right-panel col-12 col-md-6">
@@ -11,20 +11,32 @@
                 <div class="col-12">
                     <h1 class="text-center mb-4">Reservation</h1>
                     <h3 class="text-center mb-4">For Table {{ table_number }} on {{ date }}</h3>
-                    <form method="post" class="needs-validation w-70" novalidate>
+                    <form id="reservation-form" method="post" class="needs-validation w-70">
                         {% csrf_token %}
                         {{ form|crispy }}
-                        <button type="submit" class="btn btn-prime rounded-5 w-100 mt-3">Submit</button>
+                        <button id="submit-btn" type="submit" class="btn btn-prime rounded-5 w-100 mt-3">Submit</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    <div class="reg-left-panel d-none d-md-flex col-md-6">
-        <img src="{{ image }}" width="80%" alt="Fun & Interesting Learning">
-        <h2>Fun & Interesting Learning</h2>
-        <p>Master your entire curriculum at your pace and enjoy it while doing so!</p>
+    <div class="reg-left-panel d-none d-md-flex col-md-6 ">
+        <img src="{{ image }}" width="80%" alt="Reservation Information">
+        <h2>Welcome to Our Restaurant</h2>
+        <p>Reserve your table easily and enjoy a delightful dining experience with us. We look forward to serving you!</p>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('reservation-form');
+    const submitBtn = document.getElementById('submit-btn');
+
+    form.addEventListener('submit', function() {
+        submitBtn.disabled = true;
+        submitBtn.innerText = 'Submitting...';
+    });
+});
+</script>
 
 {% endblock register %}

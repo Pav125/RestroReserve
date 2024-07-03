@@ -1,10 +1,10 @@
 {% extends "Bookings/base.html" %}
 {% load static %}
-
+{% block title %}Menu{% endblock title %}
 {% block menu %}
 <div class="menu-body">
     <div class="container menu-container">
-        <div class="menu-header">Menu</div>
+        <div class="menu-header">menu</div>
         {% for category in categories %}
         <div class="category">
             <div class="category-header">{{ category.name }}</div>
@@ -17,4 +17,5 @@
         </div>
         {% endfor %}
     </div>
+</div>
 {% endblock menu %}
