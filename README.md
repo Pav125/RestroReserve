@@ -82,4 +82,4 @@ For major changes, please open an issue to discuss what you would like to change
 
 ## Contact
 
-For feedback, questions, or collaboration opportunities, please use the contact section on the website or reach out via [your-email@example.com](mailto:your-email@example.com) *(Replace with your actual email)*.
+For feedback, questions, or collaboration opportunities, please use the contact section on the website or reach out via [devipavan824@gmail.com](mailto:devipavan824@gmail.com), [your-email@example.com](mailto:your-email@example.com), [your-email@example.com](mailto:your-email@example.com)
