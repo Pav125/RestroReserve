@@ -1,1 +1,0 @@
-web: gunicorn RestroReserve.wsgi --log-file -
